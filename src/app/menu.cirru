@@ -15,22 +15,25 @@ var
 = module.exports $ React.createClass $ {}
   :displayName :app-menu
 
+  :propTypes $ {}
+    :index React.PropTypes.number.isRequired
+
   :render $ \ ()
     div ({} (:style $ @styleRoot))
-      div ({} (:style $ @styleLine))
-        span ({} (:style $ @styleAppName)) :Chrome
+      div
+        {} (:style $ @styleLine $ is @props.index 0)
         img $ {} (:src iconChrome) (:style $ @styleIcon)
         span ({} (:style $ @styleWindowTitle)) ":A Webpage"
-      div ({} (:style $ @styleLine true))
-        span ({} (:style $ @styleAppName)) :Skype
+      div
+        {} (:style $ @styleLine $ is @props.index 1)
         img $ {} (:src iconSkype) (:style $ @styleIcon)
         span ({} (:style $ @styleWindowTitle)) ":A Webpage"
-      div ({} (:style $ @styleLine))
-        span ({} (:style $ @styleAppName)) :iTerm2
+      div
+        {} (:style $ @styleLine $ is @props.index 2)
         img $ {} (:src iconIterm2) (:style $ @styleIcon)
         span ({} (:style $ @styleWindowTitle)) ":/Users/Chen/repo/"
-      div ({} (:style $ @styleLine))
-        span ({} (:style $ @styleAppName)) ":Sublime Text"
+      div
+        {} (:style $ @styleLine $ is @props.index 3)
         img $ {} (:src iconSublime) (:style $ @styleIcon)
         span ({} (:style $ @styleWindowTitle)) ":/Users/Chen/repo/demo/main.cirru"
 
@@ -39,7 +42,7 @@ var
       :width :700px
       :height :300px
       :background $ hsl 0 0 20 0.9
-      :boxShadow ":0 0 4px white"
+      :boxShadow $ + ":0 0 4px " $ hsl 0 0 60
       :display :flex
       :flexDirection :column
       :justifyContent :center
@@ -49,7 +52,7 @@ var
     {}
       :lineHeight :50px
       :fontSize :18px
-      :fontFamily ":Futura, Verdana, Helvatica"
+      :fontFamily ":Meiryo, Verdana, Helvatica"
       :color :white
       :width :100%
       :display :flex
@@ -61,19 +64,14 @@ var
 
   :styleIcon $ \ ()
     {}
-      :width 32
-      :height 32
+      :width 36
+      :height 36
       :verticalAlign :middle
       :marginLeft :10px
       :marginRight :10px
-
-  :styleAppName $ \ ()
-    {}
-      :width :140px
-      :display :inline-block
-      :textAlign :right
 
   :styleWindowTitle $ \ ()
     {}
       :display :inline-block
       :width :300px
+      :fontSize :16px
